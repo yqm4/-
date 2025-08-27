@@ -1,0 +1,113 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>yama</title>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; font-family:Arial,sans-serif; overflow:hidden; }
+
+  #bgVideo {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+  }
+
+  #overlay {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(255,255,255,.7);
+    color: black;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:2;
+    text-align:center;
+    cursor:pointer;
+  }
+
+  #overlay h1 { margin-bottom:20px; font-size:2rem; }
+
+  .content-card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    color: white;
+    z-index:1;
+    max-width:400px;
+    margin:auto;
+    text-align:center;
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  .links a {
+    display:block;
+    margin:10px 0;
+    padding:12px;
+    border-radius:30px;
+    text-decoration:none;
+    background-color:rgba(255,255,255,0.1);
+    color:white;
+    transition:0.4s;
+  }
+  .links a:hover {
+    background-color:rgba(255,255,255,0.3);
+    transform:translateX(5px) scale(1.05);
+    box-shadow:0 0 12px rgba(255,255,255,0.4);
+  }
+
+</style>
+</head>
+<body>
+
+  <video id="bgVideo" loop>
+    <source src="video.mp4" type="video/mp4">
+    お使いのブラウザでは動画が再生できません
+  </video>
+
+  <audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    お使いのブラウザでは音楽が再生できません
+  </audio>
+
+  <div id="overlay">
+    <h1>Click here</h1>
+  </div>
+
+  <div class="content-card">
+    <h2>yama</h2>
+    <p>学生</p>
+ </div>
+
+    <div class="links">
+      <a href="https://x.com/yam4sou" target="_blank">Twitter</a>
+      <a href="https://github.com/yqm4" target="_blank">GitHub</a>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    const bgVideo = document.getElementById("bgVideo");
+    const bgm = document.getElementById("bgm");
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none"; 
+
+      bgVideo.play();  
+     bgm.play();      
+    });
+  </script>
+
+</body>
+</html>
